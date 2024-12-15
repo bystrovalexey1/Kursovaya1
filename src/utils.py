@@ -112,7 +112,7 @@ def currency_rates(currency: list) -> list[dict]:
     return result
 
 
-print(currency_rates(['USD','EUR', 'BTC', 'GBP']))
+print(currency_rates(["USD", "EUR", "BTC", "GBP"]))
 
 
 def top_five_transaction(transaction_list: list) -> list:

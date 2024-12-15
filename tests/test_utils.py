@@ -1,5 +1,5 @@
 import os
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 from dotenv import load_dotenv
 
@@ -84,7 +84,7 @@ def test_top_five_transaction_empty():
     assert top_five_transaction(empty_list) == []
 
 
-@patch('requests.get')
+@patch("requests.get")
 def test_currency_rates(mock_get):
     """Тестирование функции вывода курса валют"""
     mock_get.return_value.json.return_value = {"result": currency_rates("USD")}
