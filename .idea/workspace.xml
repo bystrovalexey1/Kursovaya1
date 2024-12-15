@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb74810d-f3b2-4e0f-8aae-85364e6b209c" name="Changes" comment="structure and eqr">
+    <list default="true" id="cb74810d-f3b2-4e0f-8aae-85364e6b209c" name="Changes" comment="Разработка функционала">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/reports.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/user_settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_services.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,18 +56,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.reports.executor": "Run",
-    "Python.services.executor": "Run",
-    "Python.utils.executor": "Run",
-    "Python.views.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature-kursovaya",
-    "last_opened_file_path": "C:/Users/Alexey/PycharmProjects/pythonProject2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.reports.executor&quot;: &quot;Run&quot;,
+    &quot;Python.services.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_reports.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_views.executor&quot;: &quot;Run&quot;,
+    &quot;Python.utils.executor&quot;: &quot;Run&quot;,
+    &quot;Python.views.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-kursovaya&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alexey/PycharmProjects/pythonProject2&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python.reports">
+}</component>
+  <component name="RunManager" selected="Python.utils">
     <configuration name="reports" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Kursovaya_1" />
       <option name="ENV_FILES" value="" />
@@ -101,6 +106,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/services.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Kursovaya_1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_views.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -155,10 +182,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.reports" />
-        <item itemvalue="Python.services" />
-        <item itemvalue="Python.views" />
         <item itemvalue="Python.utils" />
+        <item itemvalue="Python.views" />
+        <item itemvalue="Python.services" />
+        <item itemvalue="Python.reports" />
+        <item itemvalue="Python.test_views" />
       </list>
     </recent_temporary>
   </component>
@@ -194,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732734325465</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Разработка функционала">
+      <option name="closed" value="true" />
+      <created>1734020643158</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734020643158</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,6 +247,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add new project" />
     <MESSAGE value="structure and eqr" />
-    <option name="LAST_COMMIT_MESSAGE" value="structure and eqr" />
+    <MESSAGE value="Разработка функционала" />
+    <option name="LAST_COMMIT_MESSAGE" value="Разработка функционала" />
   </component>
 </project>

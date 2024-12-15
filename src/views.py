@@ -5,8 +5,8 @@ from datetime import datetime
 from src.utils import (currency_rates, excel_file_opening, filtered_by_date, filtered_each_cards, get_price_stock,
                        top_five_transaction)
 
-logger = logging.getLogger("utils.log")
-file_handler = logging.FileHandler("main.log", "w")
+logger = logging.getLogger("views.log")
+file_handler = logging.FileHandler("views.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -28,7 +28,7 @@ def hello():
         return "Доброй ночи"
 
 
-# print(hello())
+print(hello())
 # transaction_for_print = [{}]
 
 
@@ -60,6 +60,6 @@ def final_list(date: str, df_transactions, stocks: list, currency: list):
     return date_json
 
 
-# print(
-#     final_list("20.05.2021", data_frame, ["S&P 500", "AAPL", "AMZN", "GOOGL", "MSFT", "TSLA"], ["USD", "EUR", "RUB"])
-# )
+print(
+    final_list("20.05.2021", data_frame, ["S&P 500", "AAPL", "AMZN", "GOOGL", "MSFT", "TSLA"], ["USD", "EUR", "RUB"])
+)

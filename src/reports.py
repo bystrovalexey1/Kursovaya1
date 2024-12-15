@@ -6,10 +6,10 @@ from typing import Optional
 
 import pandas as pd
 
-from src.utils import BASE_DIR, excel_file_opening
+from src.utils import excel_file_opening, xlcx_file
 
-logger = logging.getLogger("report.log")
-file_handler = logging.FileHandler("report.log", "w")
+logger = logging.getLogger("reports.log")
+file_handler = logging.FileHandler("reports.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -24,7 +24,7 @@ def decorator_spending_by_category(filename=None):
         def wrapper(*args, **kwargs):
             result = func(*args, **kwargs)
             with open(filename, "a") as f:
-                f.write(f"{result}\n")
+                f.write(f"{result}")
             return result
 
         return wrapper
@@ -32,7 +32,7 @@ def decorator_spending_by_category(filename=None):
     return decorator
 
 
-@decorator_spending_by_category("report.txt")
+@decorator_spending_by_category("report.json")
 def spending_by_category(transactions: pd.DataFrame, category: str, date: Optional[str] = None):
     """Функция возвращающая траты за последние 3 месяца по заданной категории"""
     logger.info("Начало работы")
@@ -83,6 +83,5 @@ def spending_by_category(transactions: pd.DataFrame, category: str, date: Option
         return data_json
 
 
-xlcx_file = BASE_DIR / "data" / "operations.xlsx"
 df = excel_file_opening(xlcx_file)
-print(*spending_by_category(df, "Переводы", "17.12.2021"), sep="\n")
+print(*spending_by_category(df, "Косметика", "17.12.2021"))

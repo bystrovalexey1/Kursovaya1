@@ -11,8 +11,8 @@ API_KEY_CUR = os.getenv("API_KEY_CUR")
 
 SP_500_API_KEY = os.getenv("SP_500_API_KEY")
 
-logger = logging.getLogger("utils")
-file_handler = logging.FileHandler("../logs/utils.log", "w")
+logger = logging.getLogger("utils.log")
+file_handler = logging.FileHandler("utils.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(filename)s %(funcName)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -65,8 +65,8 @@ def filtered_by_date(date: str, transactions_list: list):
     return current_transactions
 
 
-# cards = excel_file_opening(xlcx_file)
-# print(filtered_by_date('02.05.2020', cards))
+cards = excel_file_opening(xlcx_file)
+print(filtered_by_date("13.08.2021", cards))
 
 
 def filtered_each_cards(my_list: list) -> list:
@@ -92,7 +92,7 @@ def filtered_each_cards(my_list: list) -> list:
 
 
 # cards = excel_file_opening(xlcx_file)
-# print(for_each_card(cards))
+# print(filtered_each_cards(cards))
 
 
 def currency_rates(currency: list) -> list[dict]:
@@ -102,7 +102,7 @@ def currency_rates(currency: list) -> list[dict]:
     for i in currency:
         url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={i}&amount=1"
         headers = {"apikey": API_KEY_CUR}
-        response = requests.request("GET", url, headers=headers)
+        response = requests.get(url, headers=headers)
         rates = response.json()["info"]["rate"]
         rates = round(rates, 2)
         result.append({"Валюта": i, "Курс": rates})
@@ -112,27 +112,34 @@ def currency_rates(currency: list) -> list[dict]:
     return result
 
 
-# print(currency_rates(['USD','EUR', 'BTC', 'GBP']))
+print(currency_rates(['USD','EUR', 'BTC', 'GBP']))
 
 
 def top_five_transaction(transaction_list: list) -> list:
     """Функция для получения топ-5 транзакций по сумме платежа"""
     logger.info("Начало работы функции (top_five_transaction)")
-    top_list = []
-    sort_transaction_list = sorted(transaction_list, reverse=True, key=lambda x: abs(x["Сумма платежа"]))
-    for transaction in sort_transaction_list:
-        top = {
-            "date": transaction["Дата платежа"],
-            "amount": abs(transaction["Сумма платежа"]),
-            "category": transaction["Категория"],
-            "description": transaction["Описание"],
-        }
+    top_list = {}
+    result = []
+    for transaction in transaction_list:
         logger.info("Добавление операции в список")
-        top_list.append(top)
-        if len(top_list) == 5:
-            break
+        if transaction["Категория"] not in top_list and str(transaction["Сумма платежа"])[0] != "-":
+            if transaction["Категория"] != "Пополнения":
+                top_list[transaction["Категория"]] = float(str(transaction["Сумма платежа"])[1:])
+        elif (
+            transaction["Категория"] in top_list
+            and float(str(transaction["Сумма платежа"])[1:]) > top_list[transaction["Категория"]]
+        ):
+            top_list[transaction["Категория"]] = float(str(transaction["Сумма платежа"])[1:])
+    for tr in transaction_list:
+        for k, v in top_list.items():
+            if k == tr["Категория"] and v == float(str(tr["Сумма платежа"])[1:]):
+                result.append({"date": tr["Дата платежа"], "amount": v, "category": k, "description": tr["Описание"]})
+            if len(result) == 5:
+                break
+
     logger.info("Конец работы функции")
-    return top_list
+
+    return result
 
 
 # tr_list = excel_file_opening(xlcx_file)
