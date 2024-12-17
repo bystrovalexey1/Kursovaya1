@@ -65,8 +65,8 @@ def filtered_by_date(date: str, transactions_list: list):
     return current_transactions
 
 
-cards = excel_file_opening(xlcx_file)
-print(filtered_by_date("13.08.2021", cards))
+# cards = excel_file_opening(xlcx_file)
+# print(filtered_by_date("13.08.2021", cards))
 
 
 def filtered_each_cards(my_list: list) -> list:
@@ -100,10 +100,10 @@ def currency_rates(currency: list) -> list[dict]:
     result = []
     logger.info("Начало работы функции (currency_rates)")
     for i in currency:
-        url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={i}&amount=1"
+        url = f"https://api.apilayer.com/currency_data/convert?to=RUB&from={i}&amount=1"
         headers = {"apikey": API_KEY_CUR}
         response = requests.get(url, headers=headers)
-        rates = response.json()["info"]["rate"]
+        rates = response.json()["info"]["quote"]
         rates = round(rates, 2)
         result.append({"Валюта": i, "Курс": rates})
     logger.info("Создание списка словарей для функции - currency_rates")
@@ -112,7 +112,7 @@ def currency_rates(currency: list) -> list[dict]:
     return result
 
 
-print(currency_rates(["USD", "EUR", "BTC", "GBP"]))
+# print(currency_rates(["USD", "EUR"]))
 
 
 def top_five_transaction(transaction_list: list) -> list:

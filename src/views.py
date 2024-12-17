@@ -61,5 +61,5 @@ def final_list(date: str, df_transactions, stocks: list, currency: list):
 
 
 print(
-    final_list("20.05.2021", data_frame, ["S&P 500", "AAPL", "AMZN", "GOOGL", "MSFT", "TSLA"], ["USD", "EUR", "RUB"])
+    final_list("20.05.2021", data_frame, ["MSFT", "TSLA"], ["USD", "EUR"])
 )

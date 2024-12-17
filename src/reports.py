@@ -83,5 +83,5 @@ def spending_by_category(transactions: pd.DataFrame, category: str, date: Option
         return data_json
 
 
-df = excel_file_opening(xlcx_file)
-print(*spending_by_category(df, "Косметика", "17.12.2021"))
+# df = excel_file_opening(xlcx_file)
+# print(*spending_by_category(df, "Косметика", "17.12.2021"))
